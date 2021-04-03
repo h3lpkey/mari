@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Gallery from "../components/gallery"
 
-const IndexPage = ({ data }) => {
+const FamilyPage = ({ data }) => {
   return (
     <Layout>
       <div className="main">
@@ -15,7 +15,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allFile(filter: { sourceInstanceName: { eq: "photos-kids" } }) {
+    allFile(filter: { sourceInstanceName: { eq: "photos-family" } }) {
       nodes {
         id
         name
@@ -32,4 +32,4 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default FamilyPage

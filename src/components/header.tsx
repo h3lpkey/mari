@@ -26,7 +26,7 @@ const Header: React.FC<PropsHeader> = ({ links }) => {
         <div className="tabs">
           {links.map(link => (
             <div className="tab" key={link.id}>
-              <Link to={`/${link.title}`}>{link.title_ru}</Link>
+              <Link to={`/${link.title.toLocaleLowerCase()}`}>{link.title_ru}</Link>
             </div>
           ))}
           <div className="tab">

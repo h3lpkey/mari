@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Gallery from "../components/gallery"
 
-const IndexPage = ({ data }) => {
+const KidsPage = ({ data }) => {
   return (
     <Layout>
       <div className="main">
@@ -32,4 +32,4 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default KidsPage

@@ -1,53 +1,42 @@
-import React from "react"
-import "../assets/main.sass"
+import React, { useState } from "react"
+import Modal from "./modal"
+import Img from "gatsby-image"
 
 interface GalleryProps {
   album: {
-    title: string
-    title_ru: string
-    images: {
-      url: string
-      id: number
-      formats: {
-        small: {
-          url: string
-        }
-        medium: {
-          url: string
-        }
-        large: {
-          url: string
-        }
+    id: number
+    name: string
+    childImageSharp: {
+      fluid: {
+        aspectRatio: number
       }
-    }[]
-  }
+    }
+  }[]
 }
 
 const Gallery: React.FC<GalleryProps> = ({ album }) => {
+  const [modalImg, setModalImg] = useState(null)
   return (
-    <div className="gallery">
-      {album.images.map(image => (
-        <picture className="picture" key={image.id}>
-          <source
-            media="(max-width: 600px)"
-            srcSet={`http://localhost:1337${image.formats.small.url}`}
-          />
-          <source
-            media="(max-width: 799px)"
-            srcSet={`http://localhost:1337${image.formats.medium.url}`}
-          />
-          <source
-            media="(min-width: 800px)"
-            srcSet={`http://localhost:1337${image.formats.large.url}`}
-          />
-          <img
-            className="img"
-            src={`http://localhost:1337${image.formats.large.url}`}
-            alt="Chris standing up holding his daughter Elva"
-          />
-        </picture>
-      ))}
-    </div>
+    <>
+      <div className="gallery">
+        {album.map(image => (
+          <div
+            className={`picture ${
+              image.childImageSharp.fluid.aspectRatio > 1 ? "landscape" : ""
+            }`}
+            key={image.id}
+            onClick={() => {
+              if (!modalImg) {
+                setModalImg(image.childImageSharp.fluid)
+              }
+            }}
+          >
+            <Img fluid={image.childImageSharp.fluid} />
+          </div>
+        ))}
+      </div>
+      <Modal modalImg={modalImg} setModalImg={setModalImg} />
+    </>
   )
 }
 

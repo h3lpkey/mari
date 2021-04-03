@@ -5,6 +5,7 @@
 @import "./prices"
 @import "./about"
 @import "./gallery"
+@import "./modal"
 
 html
   height: 100%
@@ -13,6 +14,9 @@ body
   min-height: 100%
   position: relative
   margin: 0
+
+.main
+  padding-bottom: 60px
 
 /* Header  */
 .header
@@ -63,7 +67,7 @@ body
 
 /* footer */
 .footer
-  position: absolute
+  position: fixed
   left: 0
   right: 0
   bottom: 0
@@ -75,14 +79,12 @@ body
   background-color: #F8F8F8
   color: #605E5E
   .social-buttons
-    a:link, a:visited, a:hover, a:active
-      text-decoration: none
-      font-family: 'Cormorant', serif
-      font-weight: 400
-      font-style: italic
-      color: #6e6e6e
-      font-size: 20px
-      margin: 20px
+    display: flex
+    .link
+      display: flex
+      width: 25px
+      height: 25px
+      margin: 5px
 
   .copyraties
     font-size: 10px
